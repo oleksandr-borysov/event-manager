@@ -50,7 +50,12 @@ public class EventController {
 		return eventRepository.findByEventType(eventType);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/start_time={startTime},end_time={endTime}")
+	@RequestMapping(method = RequestMethod.GET, value = "/device_id={deviceId}/event_type={eventType}")
+	public Iterable<Event> findByDeviceIdAndEventType(@PathVariable String deviceId, @PathVariable String eventType) {
+		return eventRepository.findByDeviceIdAndEventType(deviceId, eventType);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/start_time={startTime}/end_time={endTime}")
 	public Iterable<Event> findByTimeRange(
 			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") Date startTime,
 			@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") Date endTime) {
@@ -59,7 +64,7 @@ public class EventController {
 		return eventRepository.findByTimestampBetween(startTimestamp, endTimestamp);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/device_id={deviceId},event_type={eventType},start_time={startTime},end_time={endTime}")
+	@RequestMapping(method = RequestMethod.GET, value = "/device_id={deviceId}/event_type={eventType}/start_time={startTime}/end_time={endTime}")
 	public Iterable<Event> find(String deviceId, String eventType, Date startTime, Date endTime) {
 		java.sql.Timestamp startTimestamp = new java.sql.Timestamp(startTime.getTime());
 		java.sql.Timestamp endTimestamp = new java.sql.Timestamp(endTime.getTime());
