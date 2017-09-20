@@ -42,6 +42,8 @@ Event JSON data type format:
 For testing can be used events data stub in JSON format located in:
 {project-root}/src/test/resources/test-data-stub.json
 
+For testing was used the Postman REST client application.
+
 Add event:
 POST http://localhost:8080/eventmanager/event/add
 Payload example:
@@ -57,6 +59,9 @@ Payload example:
 {	"timestamp":"2017-09-19T14:55:15",	"deviceId":"d2",	"eventType":"warning",	"payload": [{"key":"p1","value":"v1"},{"key":"p2","value":"v2"},{"key":"p3","value":"v3"}]
 }
 ]
+
+Find all events
+GET http://localhost:8080/eventmanager/event/all
 
 Find by device_id
 GET http://localhost:8080/eventmanager/event/device_id={string value}
