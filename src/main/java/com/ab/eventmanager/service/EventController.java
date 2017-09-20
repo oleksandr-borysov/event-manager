@@ -1,6 +1,7 @@
 package com.ab.eventmanager.service;
 
 import java.util.Date;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -8,9 +9,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ab.eventmanager.model.Event;
+import com.ab.eventmanager.repository.DynamicFilterEventRepository;
 import com.ab.eventmanager.repository.EventRepository;
 
 @RestController()
@@ -19,6 +22,9 @@ public class EventController {
 
 	@Autowired
 	private EventRepository eventRepository;
+	
+	@Autowired
+	private DynamicFilterEventRepository dynamicFilterRepository;
 
 	@RequestMapping(value = "/add")
 	public void create(@RequestBody Event event) {
@@ -40,6 +46,11 @@ public class EventController {
 		return eventRepository.findAll();
 	}
 
+	@RequestMapping(method = RequestMethod.GET)
+	public Iterable<Event> findByFilter(@RequestParam(required = false) Map<String, String> filter) throws Exception {
+			return dynamicFilterRepository.find(filter);
+	}
+
 	@RequestMapping(method = RequestMethod.GET, value = "/device_id={deviceId}")
 	public Iterable<Event> findByDeviceId(@PathVariable String deviceId) {
 		return eventRepository.findByDeviceId(deviceId);
@@ -54,6 +65,7 @@ public class EventController {
 	public Iterable<Event> findByDeviceIdAndEventType(@PathVariable String deviceId, @PathVariable String eventType) {
 		return eventRepository.findByDeviceIdAndEventType(deviceId, eventType);
 	}
+	
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/start_time={startTime}/end_time={endTime}")
 	public Iterable<Event> findByTimeRange(

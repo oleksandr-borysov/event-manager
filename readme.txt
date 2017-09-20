@@ -62,24 +62,36 @@ Payload example:
 }
 ]
 
+Find event using custom filter
+GET http://localhost:8080/eventmanager/event?start_time={yyyy-MM-ddTDD:mm:ss}&end_time={yyyy-MM-ddTDD:mm:ss}&device_id={string value}&event_type={string value}
+Parameters after '?' is optional and can appear in any sequence.
+Execute from command line:
+GET http://localhost:8080/eventmanager/event?start_time=2017-09-18T12:56:00&end_time=2017-09-18T14:56:00&device_id=d2&event_type=warning
+GET http://localhost:8080/eventmanager/event?device_id=d2&event_type=warning
+GET http://localhost:8080/eventmanager/event?start_time=2017-09-18T14:55:00&device_id=d2
+
 Find all events
 GET http://localhost:8080/eventmanager/event/all
-Execute from comman line:
+or
+GET http://localhost:8080/eventmanager/event
+Execute from command line:
 curl -X GET http://localhost:8080/eventmanager/event/all
+or
+curl -X GET http://localhost:8080/eventmanager/event
 
 Find by device_id
 GET http://localhost:8080/eventmanager/event/device_id={string value}
-Execute from comman line:
+Execute from command line:
 curl -X GET http://localhost:8080/eventmanager/event/device_id=d1
 
 Find by event_type
 GET http://localhost:8080/eventmanager/event/event_type={string value}
-Execute from comman line:
+Execute from command line:
 curl -X GET http://localhost:8080/eventmanager/event/event_type=error
 
 Find by device_id event_type
 GET http://localhost:8080/eventmanager/event/device_id={string value}/event_type={string value}
-Execute from comman line:
+Execute from command line:
 curl -X GET http://localhost:8080/eventmanager/event/device_id=d1/event_type=error
 
 Find by time range
@@ -94,4 +106,4 @@ Delete all:
 POST http://localhost:8080/eventmanager/event/delete_all
 
 
-What not implemented: data validation, proper error handling, dynamic filter for find operation
+What not implemented: data validation, proper error handling
