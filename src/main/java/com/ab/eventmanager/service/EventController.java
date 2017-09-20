@@ -30,14 +30,10 @@ public class EventController {
 		eventRepository.save(events);
 	}
 
-	// @RequestMapping(method = RequestMethod.GET)
-	// public void create(String deviceId, String eventType, String payload) {
-	// Event event = new Event();
-	// event.setDeviceId(deviceId);
-	// event.setEventType(eventType);
-	// event.setPaylod(payload);
-	// eventRepository.save(event);
-	// }
+	@RequestMapping(value = "/delete_all")
+	public void delete() {
+		eventRepository.deleteAll();
+	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/all")
 	public Iterable<Event> find() {

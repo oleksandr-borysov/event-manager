@@ -82,14 +82,11 @@
           <version>2.4</version>
           <configuration>
             <warSourceDirectory>src/main/webapp</warSourceDirectory>
-            <warName>EventManager</warName>
             <failOnMissingWebXml>false</failOnMissingWebXml>
           </configuration>
         </plugin>
         -->
       </plugins>
     </pluginManagement>
-
-    <finalName>event-manager</finalName>
   </build>
 </project>

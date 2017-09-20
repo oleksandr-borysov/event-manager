@@ -1,0 +1,16 @@
+[
+{	"timestamp":"2017-09-17T12:55:15",	"deviceId":"d1",	"eventType":"error",	"payload": [{"key":"p1","value":"v1"},{"key":"p2","value":"v2"},{"key":"p3","value":"v3"}]
+},
+{	"timestamp":"2017-09-17T12:55:15",	"deviceId":"d3",	"eventType":"notify",	"payload": [{"key":"p1","value":"v1"},{"key":"p2","value":"v2"},{"key":"p3","value":"v3"}]
+},
+{	"timestamp":"2017-09-18T12:55:15",	"deviceId":"d1",	"eventType":"error",	"payload": [{"key":"p1","value":"v1"},{"key":"p2","value":"v2"},{"key":"p3","value":"v3"}]
+},
+{	"timestamp":"2017-09-18T13:55:15",	"deviceId":"d2",	"eventType":"warning",	"payload": [{"key":"p1","value":"v1"},{"key":"p2","value":"v2"},{"key":"p3","value":"v3"}]
+},
+{	"timestamp":"2017-09-18T14:55:15",	"deviceId":"d2",	"eventType":"notify",	"payload": [{"key":"p1","value":"v1"},{"key":"p2","value":"v2"},{"key":"p3","value":"v3"}]
+},
+{	"timestamp":"2017-09-19T14:55:15",	"deviceId":"d3",	"eventType":"error",	"payload": [{"key":"p1","value":"v1"},{"key":"p2","value":"v2"},{"key":"p3","value":"v3"}]
+},
+{	"timestamp":"2017-09-19T14:55:15",	"deviceId":"d2",	"eventType":"warning",	"payload": [{"key":"p1","value":"v1"},{"key":"p2","value":"v2"},{"key":"p3","value":"v3"}]
+}
+]
